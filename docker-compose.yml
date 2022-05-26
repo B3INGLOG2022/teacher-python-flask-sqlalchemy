@@ -13,6 +13,8 @@ services:
       - "3307:3306"
   app:
     build: .
+    environment:
+      FLASK_ENV: 'development'
     ports:
       - "8001:5000"
     volumes:
