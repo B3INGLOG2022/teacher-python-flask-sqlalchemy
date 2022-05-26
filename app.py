@@ -17,6 +17,7 @@ class Student(db.Model,SerializerMixin):
     firstname = db.Column(db.String(80), unique=False, nullable=False)
     lastname = db.Column(db.String(80), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    smoker = db.Column(db.Boolean(), unique=False, nullable=False, default=False)
 
     def __repr__(self):
         return '<User %r>' % self.username
