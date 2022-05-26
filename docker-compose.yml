@@ -1,13 +1,22 @@
-db:
-  image: mysql
-  command: --default-authentication-plugin=mysql_native_password
-  restart: always
-  environment:
-    MYSQL_ROOT_PASSWORD: totor
-    MYSQL_USER: toto
-    MYSQL_PASSWORD: tata
-    MYSQL_DATABASE: titi
-app:
-  build: .
-  ports:
-    - "8001:5000"
+version: "3.9"
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: totor
+      MYSQL_USER: toto
+      MYSQL_PASSWORD: tata
+      MYSQL_DATABASE: titi
+    ports:
+      - "3307:3306"
+  app:
+    build: .
+    ports:
+      - "8001:5000"
+    volumes:
+      - ".:/app"
+
+
+
