@@ -9,6 +9,8 @@ services:
       MYSQL_USER: toto
       MYSQL_PASSWORD: tata
       MYSQL_DATABASE: titi
+    volumes:
+      - "./mysql_log.cnf:/etc/mysql/conf.d/mysql_log.cnf"
     ports:
       - "3307:3306"
   app:
