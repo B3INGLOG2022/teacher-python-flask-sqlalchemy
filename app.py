@@ -30,3 +30,11 @@ def hello_world():
 def get_students():
     students = Student.query.all()
     return jsonify([student.to_dict() for student in students])
+
+@app.route("/students/add", methods=['POST'])
+def add_student():
+    student = Student(lastname=request.json['lastname'],firstname=request.json['firstname'],email=request.json['email'])
+    db.session.add(student)
+    db.session.commit()
+    return student.to_dict()
+
