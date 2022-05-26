@@ -3,10 +3,12 @@ from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_serializer import SerializerMixin
 from flask import request
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://toto:tata@db:3306/titi'
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 ## Data model
 
@@ -19,12 +21,9 @@ class Student(db.Model,SerializerMixin):
     def __repr__(self):
         return '<User %r>' % self.username
 
-db.create_all()
-
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
-
 
 @app.route("/students")
 def get_students():
