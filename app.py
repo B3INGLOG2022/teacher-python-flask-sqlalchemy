@@ -21,3 +21,8 @@ db.create_all()
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
+
+
+# @app.route("/students")
+# def get_students():
+#     return Student.query.all()
